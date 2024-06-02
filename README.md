@@ -82,7 +82,6 @@ Binds the state value to the input element's value, making it two-way reactive.
 ```
 ### Example Usage
 Here is an example of how to use the directives in your HTML and JavaScript:
-
 ```html
 <!DOCTYPE html>
 <html lang="en">
