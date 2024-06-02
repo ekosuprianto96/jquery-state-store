@@ -6,15 +6,17 @@ A simple state management library using jQuery.
 
 ```sh
 npm install jquery-state-store
-
-Usage
+```
+## Usage
 Include jQuery and the library in your HTML file:
 
+```js
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="node_modules/my-state-management-library/stateManagement.js"></script>
+<script src="./jquery-state-store.min.js"></script>
+```
 
-Initialize and use the library:
-
+#### Initialize and use the library:
+```js
 $(document).ready(function() {
     $.useState('counter', 0);
 
@@ -28,7 +30,7 @@ $(document).ready(function() {
         $.setState('counter', currentCounter - 1);
     });
 });
-
+```
 API
 $.useState(name, initialValue)
 Register a new state.
