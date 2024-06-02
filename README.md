@@ -21,7 +21,7 @@ Include jQuery and the library in your HTML file:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="./node_modules/jquery-state-store/dist/jquery-state-store.min.js"></script>
+    <script src="https://unpkg.com/jquery-state-store@1.4.0/dist/jquery-state-store.min.js"></script>
     <title>Jquery State Management</title>
 </head>
 <body>
@@ -93,7 +93,7 @@ Here is an example of how to use the directives in your HTML and JavaScript:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>State Management Example</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="node_modules/jquery-state-store/stateManagement.js"></script>
+    <script src="https://unpkg.com/jquery-state-store@1.4.0/dist/jquery-state-store.min.js"></script>
 </head>
 <body>
     <div>
