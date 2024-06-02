@@ -9,7 +9,10 @@ Include jQuery and the library in your HTML file:
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="./jquery-state-store.min.js"></script>
 ```
-
+## Using CDN
+```js
+<script src="https://unpkg.com/jquery-state-store@1.4.0/dist/jquery-state-store.min.js"></script>
+```
 #### Initialize and use the library:
 ```html
 <!DOCTYPE html>
