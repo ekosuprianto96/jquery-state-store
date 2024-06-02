@@ -153,52 +153,57 @@
       });
   }
 
+  function applyBindings() {
+    $('[data-bind]').each(function() {
+        var element = $(this);
+        var bindings = element.data('bind').split(';');
+    
+        bindings.forEach(function(binding) {
+            var parts = binding.split(':');
+            var directive = parts[0].trim();
+            var stateKey = parts[1].trim();
+            var initialValue = $.getState(stateKey);
+    
+            switch (directive) {
+                case 'text':
+                    element.text(initialValue);
+                    break;
+                case 'html':
+                    element.html(initialValue);
+                    break;
+                case 'if':
+                    if (initialValue) {
+                        element.show();
+                    } else {
+                        element.hide();
+                    }
+                    break;
+                case 'data':
+                    element.data('value', initialValue);
+                    break;
+                case 'model':
+                    element.val(initialValue);
+                    element.on('input', function() {
+                        $.setState(stateKey, element.val());
+                    });
+                    break;
+                default:
+                    console.warn(`Unknown directive: ${directive}`);
+            }
+        });
+      });
+  }
+
   // Expose the functions to the global jQuery object
   $.useState = useState;
   $.getState = getState;
   $.setState = setState;
   $.reactive = reactive;
   $.useEffect = useEffect;
+  $.applyBindings = applyBindings;
+
 })(jQuery);
 
 $(document).ready(function() {
-  $('[data-bind]').each(function() {
-    var element = $(this);
-    var bindings = element.data('bind').split(';');
-
-    bindings.forEach(function(binding) {
-        var parts = binding.split(':');
-        var directive = parts[0].trim();
-        var stateKey = parts[1].trim();
-        var initialValue = $.getState(stateKey);
-
-        switch (directive) {
-            case 'text':
-                element.text(initialValue);
-                break;
-            case 'html':
-                element.html(initialValue);
-                break;
-            case 'if':
-                if (initialValue) {
-                    element.show();
-                } else {
-                    element.hide();
-                }
-                break;
-            case 'data':
-                element.data('value', initialValue);
-                break;
-            case 'model':
-                element.val(initialValue);
-                element.on('input', function() {
-                    $.setState(stateKey, element.val());
-                });
-                break;
-            default:
-                console.warn(`Unknown directive: ${directive}`);
-        }
-    });
-  });
+  $.applyBindings();
 });
-//# sourceMappingURL=jquery-state-store.cjs.js.map

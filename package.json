@@ -8,7 +8,9 @@
     "test": "jest"
   },
   "babel": {
-    "presets": ["@babel/preset-env"]
+    "presets": [
+      "@babel/preset-env"
+    ]
   },
   "keywords": [
     "state",
@@ -35,5 +37,10 @@
     "rollup-plugin-terser": "^7.0.2"
   },
   "author": "Eko Suprianto",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@rollup/plugin-commonjs": "^25.0.8",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "jquery": "^3.7.1"
+  }
 }

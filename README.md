@@ -2,11 +2,6 @@
 
 A simple state management library using jQuery.
 
-## Installation
-
-```sh
-npm install jquery-state-store
-```
 ## Usage
 Include jQuery and the library in your HTML file:
 
@@ -87,7 +82,6 @@ Binds the state value to the input element's value, making it two-way reactive.
 ```
 ### Example Usage
 Here is an example of how to use the directives in your HTML and JavaScript:
-
 ```html
 <!DOCTYPE html>
 <html lang="en">
