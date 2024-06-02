@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../dist/jquery-state-store.min.js"></script>
+    <title>Document</title>
+</head>
+<body >
+    <div data-bind="text:counter">0</div>
+    <div data-bind="html:htmlContent"></div>
+    <div data-bind="if:showElement">This element is conditionally shown.</div>
+    <input type="text" data-bind="model:inputValue" />
+    <input type="text" data-bind="model:user.account.name" />
+    <p data-bind="text:user.account.name"></p>
+    <button id="increment">Increment</button>
+    <button id="decrement">Decrement</button>
+    <button id="toggle">Toggle Element</button>
+
+    <script>
+        $.useState('counter', 0);
+        $.useState('htmlContent', '<strong>This is HTML content</strong>');
+        $.useState('showElement', true);
+        $.useState('inputValue', '');
+        $.useState('user', { account: {name: 'John', age: 30} });
+
+        // Example usage of useEffect
+        setTimeout(function() {
+            $.useEffect('counter', function(currentCounter) {
+                console.log('Counter changed:', currentCounter);
+            });
+
+            $.useEffect('user.account.name', function(currentName) {
+                console.log('User name changed:', currentName);
+            });
+        }, 0);
+
+        $('#increment').click(function() {
+            var currentCounter = $.getState('counter');
+            $.setState('counter', currentCounter + 1);
+            $.setState('counterValue', currentCounter + 1);
+        });
+
+        $('#decrement').click(function() {
+            var currentCounter = $.getState('counter');
+            $.setState('counter', currentCounter - 1);
+            $.setState('counterValue', currentCounter - 1);
+        });
+
+        $('#toggle').click(function() {
+            var currentVisibility = $.getState('showElement');
+            $.setState('showElement', !currentVisibility);
+        });
+    </script>
+</body>
+</html>
