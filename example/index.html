@@ -18,37 +18,38 @@
     <button id="decrement">Decrement</button>
     <button id="toggle">Toggle Element</button>
 
-    <script type="module">
-        import stateManagement from '../dist/jquery-state-store.esm.js'
+    <script>
         $(document).ready(function() {
-            stateManagement.useState('counter', 0);
-            stateManagement.useState('htmlContent', '<strong>This is HTML content</strong>');
-            stateManagement.useState('showElement', true);
-            stateManagement.useState('inputValue', '');
-            stateManagement.useState('user', { account: { name: 'John', age: 30 } });
+            $.useState('counter', 0);
+            $.useState('htmlContent', '<strong>This is HTML content</strong>');
+            $.useState('showElement', true);
+            $.useState('inputValue', '');
+            $.useState('user', { account: { name: 'John', age: 30 } });
 
-            stateManagement.useEffect('counter', function(currentCounter) {
+            $.useEffect('counter', function(currentCounter) {
                 console.log('Counter changed:', currentCounter);
             });
 
-            stateManagement.useEffect('user.account.name', function(currentName) {
+            $.useEffect('user.account.name', function(currentName) {
                 console.log('User name changed:', currentName);
             });
 
             $('#increment').click(function() {
-                const currentCounter = stateManagement.getState('counter');
-                stateManagement.setState('counter', currentCounter + 1);
+                const currentCounter = $.getState('counter');
+                $.setState('counter', currentCounter + 1);
             });
 
             $('#decrement').click(function() {
-                const currentCounter = stateManagement.getState('counter');
-                stateManagement.setState('counter', currentCounter - 1);
+                const currentCounter = $.getState('counter');
+                $.setState('counter', currentCounter - 1);
             });
 
             $('#toggle').click(function() {
-                const currentVisibility = stateManagement.getState('showElement');
-                stateManagement.setState('showElement', !currentVisibility);
+                const currentVisibility = $.getState('showElement');
+                $.setState('showElement', !currentVisibility);
             });
+
+            $.applyBindings();
         });
     </script>
 </body>
